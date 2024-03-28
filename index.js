@@ -66,7 +66,16 @@ app.put("/api/informations/:id" , (req, res) =>{
     res.send(SuperSportCar[carId])
 })
 
-
+app.delete("/api/informations/:id" , (req , res) => {
+    const idCar = Number(req.params.id);
+    if(!isNaN(idCar) && SuperSportCar.length >= idCar){
+        const superCar = SuperSportCar.splice(idCar - 1 , 1)
+        res.send(JSON.stringify(superCar , null , 2) + SuperSportCar.length);
+    }
+    else {
+        res.status(404).send("given id in not the find or it's not a number id")
+    }
+})
 
 
 app.listen(3000 , () => console.log("listening on port 3000"))
