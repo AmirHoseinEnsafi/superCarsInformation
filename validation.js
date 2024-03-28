@@ -1,4 +1,5 @@
-const Joi = require('joi');
+const Joi = require('joi')
+
 const schema = Joi.object({
     CompanyName : Joi.string().min(3).required(),
     CarName : Joi.string().min(3).required(),
@@ -11,4 +12,5 @@ const schema = Joi.object({
     Acceleration : Joi.string(),
     door : Joi.number()
 })
-module.exports = schema
+
+module.exports = schema;

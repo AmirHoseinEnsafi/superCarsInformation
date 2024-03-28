@@ -4,6 +4,7 @@ app.use(express.json())
 const Joi = require('joi')
 const schema = require('./validation.js')
 const supercar = require('./class.js');
+const PUTschema = require('./validationPUT.js')
 
 const SuperSportCar = supercar;
 
@@ -50,6 +51,20 @@ app.post("/api/informations" , (req , res) =>{
     }
 })
 
+app.put("/api/informations/:id" , (req, res) =>{
+    const carId = req.params.id -1 ;
+    const car = SuperSportCar.find(c => c.id == Number(carId))
+    if(!car) res.status(404).send("given id not found")
+    const {error , value } = PUTschema.validate(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
+    if(req.body.CarName) {
+        SuperSportCar[carId].CarName = req.body.CarName;
+    }
+    if(req.body.CompanyName){
+        SuperSportCar[carId].CompanyName = req.body.CompanyName;
+    }
+    res.send(SuperSportCar[carId])
+})
 
 
 
