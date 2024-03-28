@@ -20,9 +20,9 @@ app.get("/api/informations/:id" , (req , res) =>{
 
     if(isNaN(Number(id))){
         const superCar =  SuperSportCar.find(c => c.CompanyName == id)
-        console.log(superCar)
+        if(superCar == undefined) res.status(404).send("Company name not found");
         res.send(superCar)
-        res.end;
+        
     }
     res.status(404).send("page not found");
 })
