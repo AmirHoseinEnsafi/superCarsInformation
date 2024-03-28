@@ -128,6 +128,6 @@ const SuperSportCar = [
         Price: '100000$',
         Acceleration: '0-100 3.8sec',
         door: 2
-      },2
+      }
 ]
 module.exports = SuperSportCar;
