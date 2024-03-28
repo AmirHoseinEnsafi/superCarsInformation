@@ -2,7 +2,7 @@ const SuperSportCar = [
 {
         id: 1,
         CompanyName: 'BMW',
-        CarName: 'M5 cs',
+        CarName: 'M5_cs',
         Engine: '4.4 li V8',
         Gearbox: '8at',
         PerformanceCar: '627bhp',
@@ -28,7 +28,7 @@ const SuperSportCar = [
       {
         id: 3,
         CompanyName: 'AUdi',
-        CarName: 'r8 v10 plus',
+        CarName: 'r8_v10_plus',
         Engine: '5.2 li v10',
         Gearbox: '7at',
         PerformanceCar: '602bhp',
@@ -41,7 +41,7 @@ const SuperSportCar = [
       {
         id: 4,
         CompanyName: 'Jaguar',
-        CarName: 'F type',
+        CarName: 'F_type',
         Engine: '5.0 li v8',
         Gearbox: '6mt',
         PerformanceCar: '575 bhp',
@@ -67,7 +67,7 @@ const SuperSportCar = [
       {
         id: 6,
         CompanyName: 'Alfa Romeo',
-        CarName: 'Giulia Quadrifoglio',
+        CarName: 'Giulia_Quadrifoglio',
         Engine: '2.9 li v6',
         Gearbox: '8at',
         PerformanceCar: '505 bhp',
@@ -81,7 +81,7 @@ const SuperSportCar = [
         id: 7,
         CompanyName: 'Lamborghini',
         CarName: 'HuracanPerformante',
-        Engine: '5.2 li v10',
+        Engine: '5.2_li_v10',
         Gearbox: '7at',
         PerformanceCar: '640 bhp',
         DriveWheel: 'fourWheelDrive',
@@ -93,7 +93,7 @@ const SuperSportCar = [
       {
         id: 8,
         CompanyName: 'Nissan',
-        CarName: 'Skykine r34',
+        CarName: 'Skykine_r34',
         Engine: '2.6 li I6',
         Gearbox: '6mt',
         PerformanceCar: '280 bhp',
@@ -106,7 +106,7 @@ const SuperSportCar = [
       {
         id: 9,
         CompanyName: 'Toyota',
-        CarName: 'supra mk4',
+        CarName: 'supra_mk4',
         Engine: '3.0 li I6',
         Gearbox: '6mt',
         PerformanceCar: '321 bhp',

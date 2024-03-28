@@ -9,26 +9,29 @@ const PUTschema = require('./validationPUT.js')
 const SuperSportCar = supercar;
 
 app.get("/api/informations" , (req , res) => {
-    const cars = JSON.stringify(SuperSportCar);
+    const cars = JSON.stringify(SuperSportCar , null , 2);
     res.send(cars)
 });
 
 app.get("/api/informations/:id" , (req , res) =>{
     const id = req.params.id;
-    console.log(id)
     const contain = ["CompanyName" , "CarName" , "Engine" , "PerformanceCar" , "TopSpeed" , "Price" , "Acceleration"]
-    if(isNaN(Number(id)) == false && Number(id) < SuperSportCar.length + 1){
+    if(isNaN(id) == false && Number(id) < SuperSportCar.length + 1){
         const sportCar = SuperSportCar.find(c => c.id == Number(id));
         res.send(sportCar);
         res.end();
     } 
-    else if(isNaN(Number(id)) && !(contain.includes(id))){
-        const superCar =  SuperSportCar.find(c => c.CompanyName == id)
-        if(superCar == undefined) {
+    else if(isNaN(id) && !(contain.includes(id))){
+        const superCar =  SuperSportCar.find(c => c.CompanyName == id);
+        const sportCar =  SuperSportCar.find(c => c.CarName == id);
+        if(superCar == undefined && sportCar == undefined) {
             res.status(404).send("Company name not found");
         }
-        else {
-        res.send(superCar)
+        else if(!superCar){
+            res.send(sportCar)
+        }
+        else{
+            res.send(superCar)
         }
     }
     else if(contain.includes(id)){
