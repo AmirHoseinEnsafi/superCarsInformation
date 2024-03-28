@@ -38,17 +38,20 @@ app.get("/api/informations/:id" , (req , res) =>{
     else res.status(404).send("page not found");
 });
 
-app.listen(3000 , () => console.log("listening on port 3000"))
-
 app.post("/api/informations" , (req , res) =>{
-    const {error} = schema.validate(req.body);
+    const {error ,value} = schema.validate(req.body);
     if(error)res.status(400).send(error.details[0].message);
     else {
         const car = new Object()
         car.id = SuperSportCar.length +1;
-        const c = schema.validate(req.body)
-        Object.assign(car , c.value)
+        Object.assign(car , value)
         SuperSportCar.push(car);
         res.send(car)
     }
 })
+
+
+
+
+
+app.listen(3000 , () => console.log("listening on port 3000"))
