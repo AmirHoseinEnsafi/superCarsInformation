@@ -14,12 +14,14 @@ app.get("/api/informations" , (req , res) => {
 
 app.get("/api/informations/:id" , (req , res) =>{
     const id = req.params.id;
+    console.log(id)
+    const contain = ["CompanyName" , "CarName" , "Engine" , "PerformanceCar" , "TopSpeed" , "Price" , "Acceleration"]
     if(isNaN(Number(id)) == false && Number(id) < SuperSportCar.length + 1){
         const sportCar = SuperSportCar.find(c => c.id == Number(id));
         res.send(sportCar);
         res.end();
     } 
-    else if(isNaN(Number(id))){
+    else if(isNaN(Number(id)) && !(contain.includes(id))){
         const superCar =  SuperSportCar.find(c => c.CompanyName == id)
         if(superCar == undefined) {
             res.status(404).send("Company name not found");
@@ -28,8 +30,13 @@ app.get("/api/informations/:id" , (req , res) =>{
         res.send(superCar)
         }
     }
+    else if(contain.includes(id)){
+        const parametr = id
+        const aa = SuperSportCar.map(c=> c[parametr]);
+        res.send(aa)
+    }
     else res.status(404).send("page not found");
-})
+});
 
 app.listen(3000 , () => console.log("listening on port 3000"))
 
