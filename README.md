@@ -16,20 +16,20 @@ how to use this code
     4 to get from the CarName wrote the CarName               
                                                     get /api/informations/:CarName  
     5 to get the array of specific key  
-        [CompanyName , CarName , Engine , PerformanceCar , TopSpeed , Price , Acceleration ]  
+        [CompanyName , CarName , Engine , PerformanceCar , TopSpeed , Price , Acceleration ]    
 
-                                                    get /api/informations/:key  
+get /api/informations/:key    
 
 
-    6 for upload the data to the server you need set 4 required key   
-        [CompanyName , CarName , TopSpeed , Price] addional keys are optional   
+6 for upload the data to the server you need set 4 required key     
+[CompanyName , CarName , TopSpeed , Price] addional keys are optional     
 
-                                                   post /api/informations  
+post /api/informations    
 
-    7 for update data you can only update the   
-            [CompanyName , CarName]                           
-                                                    put /api/informations/id  
+7 for update data you can only update the     
+[CompanyName , CarName]                             
+put /api/informations/id    
 
-    8 for delete the data you just need the write correct id     
+8 for delete the data you just need the write correct id       
 
-                                                   delete /api/informations/id  
+delete /api/informations/id    

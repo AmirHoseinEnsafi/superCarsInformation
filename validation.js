@@ -1,6 +1,6 @@
 const Joi = require('joi')
-
-const schema = Joi.object({
+function postValidation(){
+    const schema = Joi.object({
     CompanyName : Joi.string().min(3).required(),
     CarName : Joi.string().min(3).required(),
     Engine : Joi.string().min(3),
@@ -12,5 +12,16 @@ const schema = Joi.object({
     Acceleration : Joi.string(),
     door : Joi.number()
 })
+return schema;
+}
+function putValidation(){
+schema = Joi.object({
+    CompanyName : Joi.string().min(3),
+    CarName : Joi.string().min(3),
+})
+return schema;
+}
 
-module.exports = schema;
+module.exports.put = putValidation;
+
+module.exports.post = postValidation;
