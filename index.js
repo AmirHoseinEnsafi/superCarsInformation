@@ -15,15 +15,16 @@ app.get("/api/informations" , (req , res) => {
     res.send(cars)
 });
 
-app.get("/api/informations/:id" , (req , res) =>{
+app.get("/api/informations/:id" , (req , res) =>{ 
     const id = req.params.id;
     const contain = ["CompanyName" , "CarName" , "Engine" , "PerformanceCar" , "TopSpeed" , "Price" , "Acceleration"]
-    if(isNaN(id) == false && Number(id) < SuperSportCar.length + 1){
+    if(isFinite(id) && Number(id) <= SuperSportCar.length){  //check if its number
         const sportCar = SuperSportCar.find(c => c.id == Number(id));
         res.send(sportCar);
         res.end();
     } 
-    else if(isNaN(id) && !(contain.includes(id))){
+    else if(isNaN(id) && !(contain.includes(id))){ //ccheck value of id is string and if its car name or company name 
+        console.log(id)
         const superCar =  SuperSportCar.find(c => c.CompanyName == id);
         const sportCar =  SuperSportCar.find(c => c.CarName == id);
         if(superCar == undefined && sportCar == undefined) {
@@ -37,11 +38,10 @@ app.get("/api/informations/:id" , (req , res) =>{
         }
     }
     else if(contain.includes(id)){
-        const parametr = id
-        const aa = SuperSportCar.map(c=> c[parametr]);
+        const aa = SuperSportCar.map(c=> c[id]);
         res.send(aa)
     }
-    else res.status(404).send("page not found");
+    else res.status(404).send("Page Not Found");
 });
 
 app.post("/api/informations" , (req , res) =>{
@@ -59,8 +59,8 @@ app.post("/api/informations" , (req , res) =>{
 app.put("/api/informations/:id" , (req, res) =>{
     const carId = req.params.id;
     const car = SuperSportCar.find(c => c.id == Number(carId))
-    if(!car) res.status(404).send("given id not found")
-    const {error , value } = PUTschema.validate(req.body);
+    if(!car) res.status(404).send("Given Id Not Found")
+    const {error} = PUTschema.validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
     if(req.body.CarName) {
         car.CarName = req.body.CarName;
@@ -73,7 +73,7 @@ app.put("/api/informations/:id" , (req, res) =>{
 
 app.delete("/api/informations/:id" , (req , res) => {
     const idCar = Number(req.params.id);
-    if(!isNaN(idCar) && SuperSportCar.length >= idCar){
+    if(isFinite(idCar) && SuperSportCar.length >= idCar){
         const superCar = SuperSportCar.splice(idCar - 1 , 1)
         res.send(JSON.stringify(superCar , null , 2) + SuperSportCar.length);
     }
